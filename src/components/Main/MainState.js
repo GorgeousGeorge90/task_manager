@@ -8,18 +8,12 @@ import task from "./Task/Task";
 const MainState = ({children})=> {
 
     const initialState = {
-        tasks:[],
+        tasks:JSON.parse(localStorage.getItem('tasks')) || [],
     }
 
     const [state,dispatch] = useReducer(mainReducer, initialState)
-    // const [newTasks, setNewTask] = useState([])
-    // useMemo(()=>{
-    //     const newTasks = state.tasks.filter(task=> task.number < 4)
-    //     setNewTask(newTasks)
-    // },[state])
-    //
+
     window.state = state
-    // window.newTasks = newTasks
 
 
 

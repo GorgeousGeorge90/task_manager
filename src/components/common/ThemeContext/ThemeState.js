@@ -4,14 +4,10 @@ import {useState} from 'react';
 
 const ThemeState = ({children}) => {
 
-    const [theme, setTheme] = useState('light')
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
 
     const toggleTheme = ()=> {
-        if ( theme === 'light') {
-            setTheme('dark')
-        } else {
-            setTheme('light')
-        }
+      theme === 'light' ? setTheme('dark') : setTheme('light')
     }
 
     return (

@@ -1,4 +1,4 @@
-import {useContext, useMemo, useState} from 'react';
+import {useContext, useEffect, useMemo, useState} from 'react';
 import {MainContext} from './MainContext';
 import MainForm from './MainForm/MainForm';
 import Task from './Task/Task';
@@ -8,6 +8,10 @@ import styles from './Main.module.scss';
 const Main = () => {
     const {tasks, addTask, deleteTask, completeTask} = useContext(MainContext)
     const [completed, setCompleted] = useState(0)
+
+    useEffect(()=>{
+        localStorage.setItem('tasks',JSON.stringify(tasks))
+    },[tasks])
 
     useMemo(()=>{
         const completedTask = tasks.filter(task => task.complete === true)

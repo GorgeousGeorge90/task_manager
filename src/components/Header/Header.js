@@ -1,11 +1,15 @@
 import styles from './Header.module.scss'
 import Switch from 'react-switch';
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 import {ThemeContext} from '../common/ThemeContext/ThemeContext';
 
 
 const Header = () => {
-    const {toggleTheme} = useContext(ThemeContext)
+    const {theme,toggleTheme} = useContext(ThemeContext)
+
+    useEffect(()=> {
+        localStorage.setItem('theme',theme)
+    },[theme])
 
     return (
         <header className={styles.header}>
@@ -14,7 +18,7 @@ const Header = () => {
                 <p>Make your work more effective!</p>
             </div>
             <div className={styles.btn}>
-                <Switch onChange={toggleTheme} />
+                <Switch onChange={toggleTheme} checked={theme === 'dark'} />
             </div>
         </header>
     )
