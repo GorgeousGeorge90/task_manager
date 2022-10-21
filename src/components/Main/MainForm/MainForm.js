@@ -1,4 +1,5 @@
 import {useForm} from 'react-hook-form';
+import styles from './MainForm.module.scss';
 
 
 const MainForm = ({addTask}) => {

@@ -9,9 +9,12 @@ export const DELETE_TASK = 'DELETE_TASK';
 const mainReducer = (state,action) => {
     switch (action.type) {
         case ADD_TASK: {
+            const data = new Date()
             const newTask = {
                 id: uuid(),
-                task: action.payload,
+                number: state.tasks.length + 1,
+                text: action.payload,
+                date:`${data.getDate()}.${data.getMonth()}.${data.getFullYear()}`,
                 complete:false,
             }
             return {
@@ -24,10 +27,10 @@ const mainReducer = (state,action) => {
             return {
                 ...state,
                 tasks: state.tasks.map(task => {
-                    if (task.id === action.payload.id) {
+                    if (task.id === action.payload) {
                         return {
                             ...task,
-                            complete:action.payload.complete
+                            complete:true,
                         }
                     } else {
                         return task

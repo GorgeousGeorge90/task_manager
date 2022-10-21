@@ -1,19 +1,21 @@
-import './App.css';
+import './App.scss';
 import Main from './components/Main/Main';
 import MainState from './components/Main/MainState';
 import Header from './components/Header/Header';
-import ThemeState from "./components/common/ThemeContext/ThemeState";
+import {useContext} from 'react';
+import {ThemeContext} from './components/common/ThemeContext/ThemeContext';
+
 
 
 function App() {
-  return (
-    <div className="App">
-        <ThemeState>
+    const {theme} = useContext(ThemeContext)
+
+    return (
+    <div className={`App${theme}`}>
             <Header/>
             <MainState>
                 <Main/>
             </MainState>
-        </ThemeState>
     </div>
   );
 }
