@@ -1,25 +1,22 @@
-import {v4 as uuid} from 'uuid';
-
+export const GET_TASKS = 'GET_TASKS';
 export const ADD_TASK = 'ADD POST';
 export const COMPLETE_TASK = 'COMPLETE_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
 
 
-
 const mainReducer = (state,action) => {
     switch (action.type) {
-        case ADD_TASK: {
-            const data = new Date()
-            const newTask = {
-                id: uuid(),
-                number: state.tasks.length + 1,
-                text: action.payload,
-                date:`${data.getDate()}.${data.getMonth()}.${data.getFullYear()}`,
-                complete:false,
-            }
+        case GET_TASKS: {
             return {
                 ...state,
-                tasks: [...state.tasks, newTask],
+                tasks: action.payload,
+            }
+        }
+
+        case ADD_TASK: {
+            return {
+                ...state,
+                tasks: [...state.tasks, action.payload],
             }
         }
 

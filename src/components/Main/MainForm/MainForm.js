@@ -15,11 +15,16 @@ const MainForm = ({addTask}) => {
           reset()
         }
 
+    const errorStyle = {
+        color:'red',
+        fontWeight: 'bolder',
+    }
+
     return (<>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input type={'text'} {...register('task')}/>
                 <button>Create Task</button>
-                {errors.task ? <p>{errors.task.message}</p>: null}
+                {errors.task ? <p style={errorStyle}>{errors.task.message}</p>: null}
             </form>
         </>
     )
