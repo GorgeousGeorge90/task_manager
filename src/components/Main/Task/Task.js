@@ -1,7 +1,7 @@
 import styles from './Task.module.scss';
 import {useEffect, useState} from 'react';
 
-const Task = ({task, completeTask, deleteTask}) => {
+const Task = ({task, completeTask, deleteTask, number}) => {
 
     const {id,text,complete,date} = task
     const [line, setLine] = useState('none')
@@ -12,7 +12,7 @@ const Task = ({task, completeTask, deleteTask}) => {
 
     return (<>
                 <div className={styles.task} style={{textDecoration:line}}>
-                    {/*<span className={styles.number}>№{number}.</span>*/}
+                    <span className={styles.number}>№{number + 1}.</span>
                     <span style={{marginLeft:'20px'}} onClick={()=>completeTask(id)}>{text}</span>
                     <span className={styles.delete} onClick={()=>deleteTask(id)}>&#128465;</span>
                     <span className={styles.date}>Date:{date}</span>
